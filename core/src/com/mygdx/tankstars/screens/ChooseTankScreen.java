@@ -31,7 +31,8 @@ public class ChooseTankScreen implements Screen {
     private boolean right_arrow = true;
     Texture background;
     Texture tankBanner;
-    Texture playerBanner;
+    Texture player1Banner;
+    Texture player2Banner;
     Texture tank;
     Texture leftArrowInactive;
     Texture leftArrowActive;
@@ -50,7 +51,8 @@ public class ChooseTankScreen implements Screen {
     public void show() {
         background = new Texture("choose_tank_bg.png");
         tankBanner = new Texture("abrams_tank_banner.png");
-        playerBanner = new Texture("player_1_banner.png");
+        player1Banner = new Texture("player_1_banner.png");
+        player2Banner = new Texture("player_2_banner.png");
         tank = new Texture("abrams_tank.png");
         leftArrowActive = new Texture("left_arrow_active.png");
         leftArrowInactive = new Texture("left_arrow_inactive.png");
@@ -73,7 +75,7 @@ public class ChooseTankScreen implements Screen {
 
         game.getBatch().draw(tank, tank_x, TANK_Y);
         game.getBatch().draw(tankBanner, banner_x, TANK_BANNER_Y);
-        game.getBatch().draw(playerBanner, PLAYER_BANNER_X, PLAYER_BANNER_Y);
+//        game.getBatch().draw(player1Banner, PLAYER_BANNER_X, PLAYER_BANNER_Y);
 
         if(left_arrow && Gdx.input.getX() < LEFT_ARROW_X + ARROW_WIDTH && Gdx.input.getX() > LEFT_ARROW_X && TankStars.getHEIGHT() - Gdx.input.getY() < ARROW_Y + ARROW_HEIGHT && TankStars.getHEIGHT() - Gdx.input.getY() > ARROW_Y) {
             game.getBatch().draw(leftArrowActive, LEFT_ARROW_X, ARROW_Y);
@@ -138,9 +140,15 @@ public class ChooseTankScreen implements Screen {
             }
             else if(currTank == 1 && Gdx.input.isTouched()){
                 currTank = 2;
+//                game.getBatch().draw(player2Banner, PLAYER_BANNER_X, PLAYER_BANNER_Y);
             }
         } else {
             game.getBatch().draw(chooseButtonInactive, CHOOSE_BUTTON_X, BUTTON_Y);
+        }
+        if(currTank == 2){
+            game.getBatch().draw(player2Banner, PLAYER_BANNER_X, PLAYER_BANNER_Y);
+        } else{
+            game.getBatch().draw(player1Banner, PLAYER_BANNER_X, PLAYER_BANNER_Y);
         }
 
         game.getBatch().end();
