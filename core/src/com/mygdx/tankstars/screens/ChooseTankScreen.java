@@ -79,7 +79,7 @@ public class ChooseTankScreen implements Screen {
 
         if(left_arrow && Gdx.input.getX() < LEFT_ARROW_X + ARROW_WIDTH && Gdx.input.getX() > LEFT_ARROW_X && TankStars.getHEIGHT() - Gdx.input.getY() < ARROW_Y + ARROW_HEIGHT && TankStars.getHEIGHT() - Gdx.input.getY() > ARROW_Y) {
             game.getBatch().draw(leftArrowActive, LEFT_ARROW_X, ARROW_Y);
-            if(Gdx.input.isTouched() && page == 2){
+            if(Gdx.input.justTouched() && page == 2){
                 page = 1;
                 left_arrow = false;
                 right_arrow = true;
@@ -88,7 +88,7 @@ public class ChooseTankScreen implements Screen {
                 game.getBatch().draw(tank, tank_x, TANK_Y);
                 game.getBatch().draw(tankBanner, banner_x, TANK_BANNER_Y);
             }
-            else if(Gdx.input.isTouched() && page == 3){
+            else if(Gdx.input.justTouched() && page == 3){
                 page = 2;
                 left_arrow = true;
                 right_arrow = true;
@@ -102,7 +102,7 @@ public class ChooseTankScreen implements Screen {
         }
         if(right_arrow && Gdx.input.getX() < RIGHT_ARROW_X + ARROW_WIDTH && Gdx.input.getX() > RIGHT_ARROW_X && TankStars.getHEIGHT() - Gdx.input.getY() < ARROW_Y + ARROW_HEIGHT && TankStars.getHEIGHT() - Gdx.input.getY() > ARROW_Y) {
             game.getBatch().draw(rightArrowActive, RIGHT_ARROW_X, ARROW_Y);
-            if(Gdx.input.isTouched() && page == 1){
+            if(Gdx.input.justTouched() && page == 1){
                 page = 2;
                 left_arrow = true;
                 right_arrow = true;
@@ -111,7 +111,7 @@ public class ChooseTankScreen implements Screen {
                 game.getBatch().draw(tank, tank_x, TANK_Y);
                 game.getBatch().draw(tankBanner, banner_x, TANK_BANNER_Y);
             }
-            else if(Gdx.input.isTouched() && page == 2){
+            else if(Gdx.input.justTouched() && page == 2){
                 page = 3;
                 left_arrow = true;
                 right_arrow = false;
@@ -134,11 +134,11 @@ public class ChooseTankScreen implements Screen {
         }
         if(Gdx.input.getX() < CHOOSE_BUTTON_X + BUTTON_WIDTH && Gdx.input.getX() > CHOOSE_BUTTON_X && TankStars.getHEIGHT() - Gdx.input.getY() < BUTTON_Y + BUTTON_HEIGHT && TankStars.getHEIGHT() - Gdx.input.getY() > BUTTON_Y) {
             game.getBatch().draw(chooseButtonActive, CHOOSE_BUTTON_X, BUTTON_Y);
-            if(currTank == 2 && Gdx.input.isTouched()){
+            if(currTank == 2 && Gdx.input.justTouched()){
                 this.dispose();
                 game.setScreen(new PlayGameScreen(game));
             }
-            else if(currTank == 1 && Gdx.input.isTouched()){
+            else if(currTank == 1 && Gdx.input.justTouched()){
                 currTank = 2;
 //                game.getBatch().draw(player2Banner, PLAYER_BANNER_X, PLAYER_BANNER_Y);
             }

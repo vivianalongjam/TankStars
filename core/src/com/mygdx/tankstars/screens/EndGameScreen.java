@@ -4,41 +4,44 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.mygdx.tankstars.TankStars;
 
-public class PauseGameScreen implements Screen {
+public class EndGameScreen implements Screen {
     private static final int BUTTON_WIDTH = 343;
     private static final int BUTTON_HEIGHT = 91;
-    private static final int SAVE_GAME_BUTTON_Y = 372;
-    private static final int RESUME_BUTTON_Y = 486;
     private static final int RESTART_BUTTON_Y = 258;
     private static final int EXIT_BUTTON_Y = 144;
+    private static final int BANNER_WIDTH = 413;
+    private static final int BANNER_HEIGHT = 59;
+    private static final int BANNER_X = 433;
+    private static final int BANNER_Y = 612;
+    private static final int TANK_WIDTH = 400;
+    private static final int TANK_HEIGHT = 400;
+    private static final int TANK_Y = 281;
+    private static final int TANK_X = 440;
     TankStars game;
     Texture background;
-    Texture resumeButtonActive;
-    Texture resumeButtonInactive;
+    TextureRegion tank;
+    Texture victoryBanner;
     Texture exitButtonActive;
     Texture exitButtonInactive;
-    Texture saveGameButtonActive;
-    Texture saveGameButtonInactive;
     Texture restartButtonActive;
     Texture restartButtonInactive;
 
-    public PauseGameScreen(TankStars game){
+    public EndGameScreen(TankStars game){
         this.game = game;
         background = new Texture("pause_bg.png");
     }
 
     @Override
     public void show() {
-        saveGameButtonInactive = new Texture("save_game_button_inactive.png");
-        saveGameButtonActive = new Texture("save_game_button_active.png");
         restartButtonInactive = new Texture("restart_game_button_inactive.png");
         restartButtonActive = new Texture("restart_game_button_active.png");
-        resumeButtonInactive = new Texture("resume_button_inactive.png");
-        resumeButtonActive = new Texture("resume_button_active.png");
         exitButtonInactive = new Texture("exit_button_inactive.png");
         exitButtonActive = new Texture("exit_button_active.png");
+        tank = new TextureRegion( new Texture("abrams_tank.png"));
+        victoryBanner = new Texture("player_1_victory_banner.png");
     }
 
     @Override
@@ -47,16 +50,9 @@ public class PauseGameScreen implements Screen {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         game.getBatch().begin();
         game.getBatch().draw(background, 0, 0);
+        game.getBatch().draw(tank, TANK_X, TANK_Y, TANK_WIDTH, TANK_HEIGHT);
+        game.getBatch().draw(victoryBanner, BANNER_X, BANNER_Y, BANNER_WIDTH, BANNER_HEIGHT);
         int x = TankStars.getWIDTH() / 2 - BUTTON_WIDTH / 2;
-        if(Gdx.input.getX() < x + BUTTON_WIDTH && Gdx.input.getX() > x && TankStars.getHEIGHT() - Gdx.input.getY() < SAVE_GAME_BUTTON_Y + BUTTON_HEIGHT && TankStars.getHEIGHT() - Gdx.input.getY() > SAVE_GAME_BUTTON_Y) {
-            game.getBatch().draw(saveGameButtonActive, TankStars.getWIDTH() / 2 - BUTTON_WIDTH / 2, SAVE_GAME_BUTTON_Y, BUTTON_WIDTH, BUTTON_HEIGHT);
-            if(Gdx.input.isTouched()){
-                this.dispose();
-                game.setScreen(new SavedGamesScreen(game));
-            }
-        } else {
-            game.getBatch().draw(saveGameButtonInactive, TankStars.getWIDTH() / 2 - BUTTON_WIDTH / 2, SAVE_GAME_BUTTON_Y, BUTTON_WIDTH, BUTTON_HEIGHT);
-        }
         if(Gdx.input.getX() < x + BUTTON_WIDTH && Gdx.input.getX() > x && TankStars.getHEIGHT() - Gdx.input.getY() < RESTART_BUTTON_Y + BUTTON_HEIGHT && TankStars.getHEIGHT() - Gdx.input.getY() > RESTART_BUTTON_Y) {
             game.getBatch().draw(restartButtonActive, TankStars.getWIDTH() / 2 - BUTTON_WIDTH / 2, RESTART_BUTTON_Y, BUTTON_WIDTH, BUTTON_HEIGHT);
             if(Gdx.input.isTouched()){
@@ -65,15 +61,6 @@ public class PauseGameScreen implements Screen {
             }
         } else {
             game.getBatch().draw(restartButtonInactive, TankStars.getWIDTH() / 2 - BUTTON_WIDTH / 2, RESTART_BUTTON_Y, BUTTON_WIDTH, BUTTON_HEIGHT);
-        }
-        if(Gdx.input.getX() < x + BUTTON_WIDTH && Gdx.input.getX() > x && TankStars.getHEIGHT() - Gdx.input.getY() < RESUME_BUTTON_Y + BUTTON_HEIGHT && TankStars.getHEIGHT() - Gdx.input.getY() > RESUME_BUTTON_Y) {
-            game.getBatch().draw(resumeButtonActive, TankStars.getWIDTH() / 2 - BUTTON_WIDTH / 2, RESUME_BUTTON_Y, BUTTON_WIDTH, BUTTON_HEIGHT);
-            if(Gdx.input.isTouched()){
-                this.dispose();
-                game.setScreen(new PlayGameScreen(game));
-            }
-        } else {
-            game.getBatch().draw(resumeButtonInactive, TankStars.getWIDTH() / 2 - BUTTON_WIDTH / 2, RESUME_BUTTON_Y, BUTTON_WIDTH, BUTTON_HEIGHT);
         }
         if(Gdx.input.getX() < x + BUTTON_WIDTH && Gdx.input.getX() > x && TankStars.getHEIGHT() - Gdx.input.getY() < EXIT_BUTTON_Y + BUTTON_HEIGHT && TankStars.getHEIGHT() - Gdx.input.getY() > EXIT_BUTTON_Y) {
             game.getBatch().draw(exitButtonActive, TankStars.getWIDTH() / 2 - BUTTON_WIDTH / 2, EXIT_BUTTON_Y, BUTTON_WIDTH, BUTTON_HEIGHT);

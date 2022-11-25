@@ -64,7 +64,7 @@ public class MainMenuScreen implements Screen {
         }
         if(Gdx.input.getX() < x + BUTTON_WIDTH && Gdx.input.getX() > x && TankStars.getHEIGHT() - Gdx.input.getY() < EXIT_BUTTON_Y + BUTTON_HEIGHT && TankStars.getHEIGHT() - Gdx.input.getY() > EXIT_BUTTON_Y) {
             game.getBatch().draw(exitButtonActive, TankStars.getWIDTH() / 2 - BUTTON_WIDTH / 2, EXIT_BUTTON_Y, BUTTON_WIDTH, BUTTON_HEIGHT);
-            if(Gdx.input.isTouched()){
+            if(Gdx.input.justTouched()){
                 Gdx.app.exit();
             }
         } else {
