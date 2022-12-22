@@ -6,7 +6,12 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.mygdx.tankstars.TankStars;
 
-public class SavedGamesScreen implements Screen {
+import java.io.Serializable;
+import java.util.ArrayList;
+
+public class SavedGamesScreen implements Screen, Serializable {
+    private static ArrayList<PlayGameScreen> playgame=new ArrayList<PlayGameScreen>();
+
     private static final int BUTTON_WIDTH = 204;
     private static final int BUTTON_HEIGHT = 59;
     private static final int BUTTON_Y = 54;
@@ -32,6 +37,13 @@ public class SavedGamesScreen implements Screen {
     Texture gameButtonInactive4;
     TankStars game;
 
+    public SavedGamesScreen(TankStars game,PlayGameScreen pg){
+        this.game = game;
+
+
+        playgame.add(pg);
+        background = new Texture("main_menu_bg.png");
+    }
     public SavedGamesScreen(TankStars game){
         this.game = game;
         background = new Texture("main_menu_bg.png");
@@ -49,7 +61,6 @@ public class SavedGamesScreen implements Screen {
         gameButtonInactive3 = new Texture("saved_game_button_3_inactive.png");
         gameButtonActive4 = new Texture("saved_game_button_4_active.png");
         gameButtonInactive4 = new Texture("saved_game_button_4_inactive.png");
-
     }
 
     @Override
@@ -69,37 +80,37 @@ public class SavedGamesScreen implements Screen {
         }
         if(Gdx.input.getX() < x1 + GAME_WIDTH && Gdx.input.getX() > x1 && TankStars.getHEIGHT() - Gdx.input.getY() < GAME_ROW1_Y + GAME_HEIGHT && TankStars.getHEIGHT() - Gdx.input.getY() > GAME_ROW1_Y) {
             game.getBatch().draw(gameButtonActive1, x1, GAME_ROW1_Y);
-//            if(Gdx.input.isTouched()){
-//                this.dispose();
-//                game.setScreen(new MainMenuScreen(game));
-//            }
+            if(Gdx.input.isTouched()){
+                this.dispose();
+                game.setScreen(playgame.get(0));
+            }
         } else {
             game.getBatch().draw(gameButtonInactive1, x1, GAME_ROW1_Y);
         }
         if(Gdx.input.getX() < x2 + GAME_WIDTH && Gdx.input.getX() > x2 && TankStars.getHEIGHT() - Gdx.input.getY() < GAME_ROW1_Y + GAME_HEIGHT && TankStars.getHEIGHT() - Gdx.input.getY() > GAME_ROW1_Y) {
             game.getBatch().draw(gameButtonActive2, x2, GAME_ROW1_Y);
-//            if(Gdx.input.isTouched()){
-//                this.dispose();
-//                game.setScreen(new MainMenuScreen(game));
-//            }
+            if(Gdx.input.isTouched()){
+                this.dispose();
+                game.setScreen(playgame.get(1));
+            }
         } else {
             game.getBatch().draw(gameButtonInactive2, x2, GAME_ROW1_Y);
         }
         if(Gdx.input.getX() < x3 + GAME_WIDTH && Gdx.input.getX() > x3 && TankStars.getHEIGHT() - Gdx.input.getY() < GAME_ROW1_Y + GAME_HEIGHT && TankStars.getHEIGHT() - Gdx.input.getY() > GAME_ROW1_Y) {
             game.getBatch().draw(gameButtonActive3, x3, GAME_ROW1_Y);
-//            if(Gdx.input.isTouched()){
-//                this.dispose();
-//                game.setScreen(new MainMenuScreen(game));
-//            }
+            if(Gdx.input.isTouched()){
+                this.dispose();
+                game.setScreen(playgame.get(2));
+            }
         } else {
             game.getBatch().draw(gameButtonInactive3, x3, GAME_ROW1_Y);
         }
         if(Gdx.input.getX() < x4 + GAME_WIDTH && Gdx.input.getX() > x4 && TankStars.getHEIGHT() - Gdx.input.getY() < GAME_ROW1_Y + GAME_HEIGHT && TankStars.getHEIGHT() - Gdx.input.getY() > GAME_ROW1_Y) {
             game.getBatch().draw(gameButtonActive4, x4, GAME_ROW1_Y);
-//            if(Gdx.input.isTouched()){
-//                this.dispose();
-//                game.setScreen(new MainMenuScreen(game));
-//            }
+            if(Gdx.input.isTouched()){
+                this.dispose();
+                game.setScreen(playgame.get(3));
+            }
         } else {
             game.getBatch().draw(gameButtonInactive4, x4, GAME_ROW1_Y);
         }

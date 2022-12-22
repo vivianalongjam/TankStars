@@ -6,7 +6,9 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.mygdx.tankstars.TankStars;
 
-public class ChooseTankScreen implements Screen {
+import java.io.Serializable;
+
+public class ChooseTankScreen implements Screen, Serializable {
     private static final int BANNER_WIDTH = 343;
     private static final int BANNER_HEIGHT = 91;
     private static final int BUTTON_WIDTH = 204;

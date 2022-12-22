@@ -6,7 +6,10 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.mygdx.tankstars.TankStars;
 
-public class PauseGameScreen implements Screen {
+import java.io.Serializable;
+
+public class PauseGameScreen implements Screen, Serializable {
+    private PlayGameScreen pg;
     private static final int BUTTON_WIDTH = 343;
     private static final int BUTTON_HEIGHT = 91;
     private static final int SAVE_GAME_BUTTON_Y = 372;
@@ -24,8 +27,9 @@ public class PauseGameScreen implements Screen {
     Texture restartButtonActive;
     Texture restartButtonInactive;
 
-    public PauseGameScreen(TankStars game){
+    public PauseGameScreen(TankStars game, PlayGameScreen pg){
         this.game = game;
+        this.pg = pg;
         background = new Texture("pause_bg.png");
     }
 
@@ -52,7 +56,7 @@ public class PauseGameScreen implements Screen {
             game.getBatch().draw(saveGameButtonActive, TankStars.getWIDTH() / 2 - BUTTON_WIDTH / 2, SAVE_GAME_BUTTON_Y, BUTTON_WIDTH, BUTTON_HEIGHT);
             if(Gdx.input.isTouched()){
                 this.dispose();
-                game.setScreen(new SavedGamesScreen(game));
+                game.setScreen(new SavedGamesScreen(game,this.pg));
             }
         } else {
             game.getBatch().draw(saveGameButtonInactive, TankStars.getWIDTH() / 2 - BUTTON_WIDTH / 2, SAVE_GAME_BUTTON_Y, BUTTON_WIDTH, BUTTON_HEIGHT);

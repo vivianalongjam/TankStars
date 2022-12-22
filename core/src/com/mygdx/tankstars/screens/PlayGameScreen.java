@@ -10,8 +10,9 @@ import com.mygdx.tankstars.TankStars;
 import com.mygdx.tankstars.entities.Player;
 
 import javax.swing.*;
+import java.io.Serializable;
 
-public class PlayGameScreen implements Screen {
+public class PlayGameScreen implements Screen, Serializable {
     private static final int BACKGROUND_WIDTH = 1280;
     private static final int BACKGROUND_HEIGHT = 720;
     private static final int TANK_WIDTH = 150;
@@ -107,7 +108,7 @@ public class PlayGameScreen implements Screen {
             game.getBatch().draw(pauseButtonActive, PAUSE_X, PAUSE_Y);
             if(Gdx.input.isTouched()){
                 this.dispose();
-                game.setScreen(new PauseGameScreen(game));
+                game.setScreen(new PauseGameScreen(game,this));
             }
         }
         else{
