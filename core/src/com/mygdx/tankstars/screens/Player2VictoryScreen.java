@@ -7,7 +7,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.mygdx.tankstars.TankStars;
 
-public class EndGameScreen implements Screen {
+public class Player2VictoryScreen implements Screen {
     private static final int BUTTON_WIDTH = 343;
     private static final int BUTTON_HEIGHT = 91;
     private static final int RESTART_BUTTON_Y = 258;
@@ -29,7 +29,7 @@ public class EndGameScreen implements Screen {
     Texture restartButtonActive;
     Texture restartButtonInactive;
 
-    public EndGameScreen(TankStars game){
+    public Player2VictoryScreen(TankStars game){
         this.game = game;
         background = new Texture("pause_bg.png");
     }
@@ -41,7 +41,7 @@ public class EndGameScreen implements Screen {
         exitButtonInactive = new Texture("exit_button_inactive.png");
         exitButtonActive = new Texture("exit_button_active.png");
         tank = new TextureRegion( new Texture("abrams_tank.png"));
-        victoryBanner = new Texture("player_1_victory_banner.png");
+        victoryBanner = new Texture("player_2_victory_banner.png");
     }
 
     @Override

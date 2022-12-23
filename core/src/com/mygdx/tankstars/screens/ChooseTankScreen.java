@@ -31,6 +31,8 @@ public class ChooseTankScreen implements Screen, Serializable {
     private int currTank = 1;
     private boolean left_arrow = false;
     private boolean right_arrow = true;
+    private int player1 = 1;
+    private int player2 = 1;
     Texture background;
     Texture tankBanner;
     Texture player1Banner;
@@ -137,10 +139,12 @@ public class ChooseTankScreen implements Screen, Serializable {
         if(Gdx.input.getX() < CHOOSE_BUTTON_X + BUTTON_WIDTH && Gdx.input.getX() > CHOOSE_BUTTON_X && TankStars.getHEIGHT() - Gdx.input.getY() < BUTTON_Y + BUTTON_HEIGHT && TankStars.getHEIGHT() - Gdx.input.getY() > BUTTON_Y) {
             game.getBatch().draw(chooseButtonActive, CHOOSE_BUTTON_X, BUTTON_Y);
             if(currTank == 2 && Gdx.input.justTouched()){
+                player2 = page;
                 this.dispose();
-                game.setScreen(new PlayGameScreen(game));
+                game.setScreen(new PlayGameScreen(game, player1, player2));
             }
             else if(currTank == 1 && Gdx.input.justTouched()){
+                player1 = page;
                 currTank = 2;
 //                game.getBatch().draw(player2Banner, PLAYER_BANNER_X, PLAYER_BANNER_Y);
             }
