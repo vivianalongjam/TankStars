@@ -112,6 +112,16 @@ public class PlayGameScreen implements Screen, Serializable {
 //        testDecFuel();
     }
 
+    public PlayGameScreen(PlayGameScreen pg, int option1, int option2) {
+        this.game = pg.game;
+        this.option1 = option1;
+        this.option2 = option2;
+        tank1 = new Player(pg.tank1, option1);
+        tank2 = new Player(pg.tank2, option2);
+        ground = Ground.getInstance();
+        turn = pg.turn;
+    }
+
     public void decFuel(){
         FUEL_WIDTH -= 1 * Gdx.graphics.getDeltaTime();
     }
@@ -164,7 +174,6 @@ public class PlayGameScreen implements Screen, Serializable {
         health2 = new Texture("health.png");
 //        tank2.flip(true,false);
     }
-
     @Override
     public void render(float delta) {
         Gdx.gl.glClearColor(0, 0, 0, 1);

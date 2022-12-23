@@ -5,6 +5,9 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.mygdx.tankstars.TankStars;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class Player {
     private static final int TANK_WIDTH = 150;
     private static final int TANK_HEIGHT = 150;
@@ -33,6 +36,33 @@ public class Player {
             this.tank = new TextureRegion(new Texture("helios_tank.png"));
         }
         if(n.equals("right")){
+            this.tank.flip(true, false);
+        }
+        this.fuel = FUEL_MAX;
+        this.hp = HP_MAX;
+    }
+
+    private static Map<String, Player> instances =
+            new HashMap<String, Player>();
+
+    public Player() {
+
+    }
+
+    public Player(Player tank1, int option1) {
+        this.x = tank1.x;
+        this.y = tank1.y;
+        this.player_region = tank1.player_region;
+        if (option1 == 1) {
+            this.tank = new TextureRegion(new Texture("abrams_tank.png"));
+        }
+        else if (option1 == 2){
+            this.tank = new TextureRegion(new Texture("frost_tank.png"));
+        }
+        else{
+            this.tank = new TextureRegion(new Texture("helios_tank.png"));
+        }
+        if(tank1.player_region.equals("right")){
             this.tank.flip(true, false);
         }
         this.fuel = FUEL_MAX;

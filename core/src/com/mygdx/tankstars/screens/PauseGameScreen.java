@@ -78,7 +78,7 @@ public class PauseGameScreen implements Screen, Serializable {
             game.getBatch().draw(resumeButtonActive, TankStars.getWIDTH() / 2 - BUTTON_WIDTH / 2, RESUME_BUTTON_Y, BUTTON_WIDTH, BUTTON_HEIGHT);
             if(Gdx.input.isTouched()){
                 this.dispose();
-                game.setScreen(new PlayGameScreen(game, option1, option2));
+                game.setScreen(new PlayGameScreen(this.pg, option1, option2));
             }
         } else {
             game.getBatch().draw(resumeButtonInactive, TankStars.getWIDTH() / 2 - BUTTON_WIDTH / 2, RESUME_BUTTON_Y, BUTTON_WIDTH, BUTTON_HEIGHT);
