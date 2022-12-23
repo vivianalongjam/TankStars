@@ -6,6 +6,9 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.mygdx.tankstars.TankStars;
+import org.junit.Test;
+
+import static org.junit.Assert.assertNotNull;
 
 public class Player1VictoryScreen implements Screen {
     private static final int BUTTON_WIDTH = 343;
@@ -32,6 +35,15 @@ public class Player1VictoryScreen implements Screen {
     public Player1VictoryScreen(TankStars game){
         this.game = game;
         background = new Texture("pause_bg.png");
+        test4();
+    }
+    @Test
+    public void test4(){
+        //Player1victory screen
+        TankStars tankStars=new TankStars();
+        Player1VictoryScreen endGameScreen=new Player1VictoryScreen(tankStars);
+        assertNotNull(endGameScreen);
+        System.out.println("Player1victory screen test passed");
     }
 
     @Override

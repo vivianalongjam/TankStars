@@ -5,6 +5,9 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.mygdx.tankstars.TankStars;
+import org.junit.Test;
+
+import static org.junit.Assert.assertNotNull;
 
 public class MainMenuScreen implements Screen {
     private static final int BACKGROUND_WIDTH = 1280;
@@ -25,6 +28,14 @@ public class MainMenuScreen implements Screen {
     public MainMenuScreen(TankStars game){
         this.game = game;
         background = new Texture("main_menu_bg.png");
+        testMainMenu();
+    }
+    @Test
+    public void testMainMenu(){
+        TankStars tankStars=new TankStars();
+        MainMenuScreen mainMenuScreen=new MainMenuScreen(tankStars);
+        assertNotNull(mainMenuScreen);
+        System.out.println("Junit Test passed");
     }
 
     @Override

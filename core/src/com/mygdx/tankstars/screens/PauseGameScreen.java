@@ -26,11 +26,15 @@ public class PauseGameScreen implements Screen, Serializable {
     Texture saveGameButtonInactive;
     Texture restartButtonActive;
     Texture restartButtonInactive;
+    int option1;
+    int option2;
 
-    public PauseGameScreen(TankStars game, PlayGameScreen pg){
+    public PauseGameScreen(TankStars game, int option1, int option2, PlayGameScreen pg){
         this.game = game;
-        this.pg = pg;
         background = new Texture("pause_bg.png");
+        this.option1 = option1;
+        this.option2 = option2;
+        this.pg = pg;
     }
 
     @Override
@@ -74,7 +78,7 @@ public class PauseGameScreen implements Screen, Serializable {
             game.getBatch().draw(resumeButtonActive, TankStars.getWIDTH() / 2 - BUTTON_WIDTH / 2, RESUME_BUTTON_Y, BUTTON_WIDTH, BUTTON_HEIGHT);
             if(Gdx.input.isTouched()){
                 this.dispose();
-                game.setScreen(new PlayGameScreen(game));
+                game.setScreen(new PlayGameScreen(game, option1, option2));
             }
         } else {
             game.getBatch().draw(resumeButtonInactive, TankStars.getWIDTH() / 2 - BUTTON_WIDTH / 2, RESUME_BUTTON_Y, BUTTON_WIDTH, BUTTON_HEIGHT);

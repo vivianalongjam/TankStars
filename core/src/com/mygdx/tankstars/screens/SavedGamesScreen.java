@@ -5,9 +5,12 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.mygdx.tankstars.TankStars;
+import org.junit.Test;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+
+import static org.junit.Assert.assertNotNull;
 
 public class SavedGamesScreen implements Screen, Serializable {
     private static ArrayList<PlayGameScreen> playgame=new ArrayList<PlayGameScreen>();
@@ -36,17 +39,23 @@ public class SavedGamesScreen implements Screen, Serializable {
     Texture gameButtonActive4;
     Texture gameButtonInactive4;
     TankStars game;
-
     public SavedGamesScreen(TankStars game,PlayGameScreen pg){
         this.game = game;
-
-
         playgame.add(pg);
         background = new Texture("main_menu_bg.png");
     }
+
     public SavedGamesScreen(TankStars game){
         this.game = game;
         background = new Texture("main_menu_bg.png");
+        testsavedgame();
+    }
+    @Test
+    public void testsavedgame(){
+        TankStars tankStars=new TankStars();
+        SavedGamesScreen savedGamesScreen=new SavedGamesScreen(tankStars);
+        assertNotNull(savedGamesScreen);
+        System.out.println("Junit test saved game");
     }
 
     @Override
@@ -82,7 +91,12 @@ public class SavedGamesScreen implements Screen, Serializable {
             game.getBatch().draw(gameButtonActive1, x1, GAME_ROW1_Y);
             if(Gdx.input.isTouched()){
                 this.dispose();
-                game.setScreen(playgame.get(0));
+                if(playgame.size()>0){
+                    game.setScreen(playgame.get(0));
+                }
+                else {
+                    game.setScreen(new SavedGamesScreen(game));
+                }
             }
         } else {
             game.getBatch().draw(gameButtonInactive1, x1, GAME_ROW1_Y);
@@ -91,7 +105,12 @@ public class SavedGamesScreen implements Screen, Serializable {
             game.getBatch().draw(gameButtonActive2, x2, GAME_ROW1_Y);
             if(Gdx.input.isTouched()){
                 this.dispose();
-                game.setScreen(playgame.get(1));
+                if(playgame.size()>1){
+                    game.setScreen(playgame.get(1));
+                }
+                else {
+                    game.setScreen(new SavedGamesScreen(game));
+                }
             }
         } else {
             game.getBatch().draw(gameButtonInactive2, x2, GAME_ROW1_Y);
@@ -100,7 +119,12 @@ public class SavedGamesScreen implements Screen, Serializable {
             game.getBatch().draw(gameButtonActive3, x3, GAME_ROW1_Y);
             if(Gdx.input.isTouched()){
                 this.dispose();
-                game.setScreen(playgame.get(2));
+                if(playgame.size()>2){
+                    game.setScreen(playgame.get(2));
+                }
+                else {
+                    game.setScreen(new SavedGamesScreen(game));
+                }
             }
         } else {
             game.getBatch().draw(gameButtonInactive3, x3, GAME_ROW1_Y);
@@ -109,7 +133,12 @@ public class SavedGamesScreen implements Screen, Serializable {
             game.getBatch().draw(gameButtonActive4, x4, GAME_ROW1_Y);
             if(Gdx.input.isTouched()){
                 this.dispose();
-                game.setScreen(playgame.get(3));
+                if(playgame.size()>3){
+                    game.setScreen(playgame.get(3));
+                }
+                else {
+                    game.setScreen(new SavedGamesScreen(game));
+                }
             }
         } else {
             game.getBatch().draw(gameButtonInactive4, x4, GAME_ROW1_Y);
