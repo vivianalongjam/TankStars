@@ -9,11 +9,11 @@ import com.mygdx.tankstars.TankStars;
 import com.mygdx.tankstars.entities.Ground;
 import com.mygdx.tankstars.entities.Player;
 import com.mygdx.tankstars.entities.Weapon;
-import org.junit.Test;
+//import org.junit.Test;
 
 import java.io.Serializable;
-
-import static org.junit.Assert.assertEquals;
+//
+//import static org.junit.Assert.assertEquals;
 
 public class PlayGameScreen implements Screen, Serializable {
     private static final int BACKGROUND_WIDTH = 1280;
@@ -109,25 +109,25 @@ public class PlayGameScreen implements Screen, Serializable {
 
     public PlayGameScreen(TankStars game) {
         this.game = game;
-        testDecFuel();
+//        testDecFuel();
     }
 
     public void decFuel(){
         FUEL_WIDTH -= 1 * Gdx.graphics.getDeltaTime();
     }
-    @Test
-    public void testDecFuel() {
-        // Create a test object and set the initial fuel width
-        PlayGameScreen playGameScreen = new PlayGameScreen(null);
-        playGameScreen.FUEL_WIDTH = 100;
-
-        // Call the method to be tested
-        playGameScreen.decFuel();
-
-        // Check that the fuel width has decreased by 1
-        assertEquals(99, playGameScreen.FUEL_WIDTH);
-        System.out.println("junit testDecFuel passed");
-    }
+//    @Test
+//    public void testDecFuel() {
+//        // Create a test object and set the initial fuel width
+//        PlayGameScreen playGameScreen = new PlayGameScreen(null);
+//        playGameScreen.FUEL_WIDTH = 100;
+//
+//        // Call the method to be tested
+//        playGameScreen.decFuel();
+//
+//        // Check that the fuel width has decreased by 1
+//        assertEquals(99, playGameScreen.FUEL_WIDTH);
+//        System.out.println("junit testDecFuel passed");
+//    }
     public void decPower(){
         if(POWER_WIDTH > 0) {
 //            POWER_WIDTH -= 1 * Gdx.graphics.getDeltaTime();

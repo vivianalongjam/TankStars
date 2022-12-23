@@ -5,12 +5,12 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.mygdx.tankstars.TankStars;
-import org.junit.Test;
+//import org.junit.Test;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 
-import static org.junit.Assert.assertNotNull;
+//import static org.junit.Assert.assertNotNull;
 
 public class SavedGamesScreen implements Screen, Serializable {
     private static ArrayList<PlayGameScreen> playgame=new ArrayList<PlayGameScreen>();
@@ -48,15 +48,15 @@ public class SavedGamesScreen implements Screen, Serializable {
     public SavedGamesScreen(TankStars game){
         this.game = game;
         background = new Texture("main_menu_bg.png");
-        testsavedgame();
+//        testsavedgame();
     }
-    @Test
-    public void testsavedgame(){
-        TankStars tankStars=new TankStars();
-        SavedGamesScreen savedGamesScreen=new SavedGamesScreen(tankStars);
-        assertNotNull(savedGamesScreen);
-        System.out.println("Junit test saved game");
-    }
+//    @Test
+//    public void testsavedgame(){
+//        TankStars tankStars=new TankStars();
+//        SavedGamesScreen savedGamesScreen=new SavedGamesScreen(tankStars);
+//        assertNotNull(savedGamesScreen);
+//        System.out.println("Junit test saved game");
+//    }
 
     @Override
     public void show() {

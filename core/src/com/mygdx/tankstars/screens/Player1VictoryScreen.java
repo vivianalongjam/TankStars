@@ -35,16 +35,16 @@ public class Player1VictoryScreen implements Screen {
     public Player1VictoryScreen(TankStars game){
         this.game = game;
         background = new Texture("pause_bg.png");
-        test4();
+//        test4();
     }
-    @Test
-    public void test4(){
-        //Player1victory screen
-        TankStars tankStars=new TankStars();
-        Player1VictoryScreen endGameScreen=new Player1VictoryScreen(tankStars);
-        assertNotNull(endGameScreen);
-        System.out.println("Player1victory screen test passed");
-    }
+//    @Test
+//    public void test4(){
+//        //Player1victory screen
+//        TankStars tankStars=new TankStars();
+//        Player1VictoryScreen endGameScreen=new Player1VictoryScreen(tankStars);
+//        assertNotNull(endGameScreen);
+//        System.out.println("Player1victory screen test passed");
+//    }
 
     @Override
     public void show() {

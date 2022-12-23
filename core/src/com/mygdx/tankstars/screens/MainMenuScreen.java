@@ -28,15 +28,15 @@ public class MainMenuScreen implements Screen {
     public MainMenuScreen(TankStars game){
         this.game = game;
         background = new Texture("main_menu_bg.png");
-        testMainMenu();
+//        testMainMenu();
     }
-    @Test
-    public void testMainMenu(){
-        TankStars tankStars=new TankStars();
-        MainMenuScreen mainMenuScreen=new MainMenuScreen(tankStars);
-        assertNotNull(mainMenuScreen);
-        System.out.println("Junit Test passed");
-    }
+//    @Test
+//    public void testMainMenu(){
+//        TankStars tankStars=new TankStars();
+//        MainMenuScreen mainMenuScreen=new MainMenuScreen(tankStars);
+//        assertNotNull(mainMenuScreen);
+//        System.out.println("Junit Test passed");
+//    }
 
     @Override
     public void show() {
